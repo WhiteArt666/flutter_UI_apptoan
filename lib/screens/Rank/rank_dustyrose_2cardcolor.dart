@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../widgets/custom_header.dart';
 
@@ -17,7 +18,8 @@ class RankDustyrose2cardcolor extends StatelessWidget {
           CustomHeader(),
           // Nội dung chính của Scaffold
           Scaffold(
-            backgroundColor: Colors.transparent, // Đặt nền trong suốt để thấy CustomHeader
+            backgroundColor:
+                Colors.transparent, // Đặt nền trong suốt để thấy CustomHeader
             appBar: AppBar(
               centerTitle: true,
               backgroundColor: Colors.transparent,
@@ -67,12 +69,7 @@ class RankDustyrose2cardcolor extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _buildRankCard(
-          2,
-          'Đinh Trọng Phúc',
-          10,
-          screenWidth / 3 - 16,
-        ),
+        _buildRankCard(2, 'Đinh Trọng Phúc', 10, screenWidth / 3 - 16),
         _buildRankCard(
           1,
           'Đinh Trọng Phúc',
@@ -80,12 +77,7 @@ class RankDustyrose2cardcolor extends StatelessWidget {
           screenWidth / 3 - 16,
           isTop: true,
         ),
-        _buildRankCard(
-          3,
-          'Đinh Trọng Phúc',
-          10,
-          screenWidth / 3 - 16,
-        ),
+        _buildRankCard(3, 'Đinh Trọng Phúc', 10, screenWidth / 3 - 16),
       ],
     );
   }
@@ -147,9 +139,13 @@ class RankDustyrose2cardcolor extends StatelessWidget {
                   ),
                 ),
                 if (isTop)
-                  const Positioned(
-                    top: -12,
-                    child: Icon(Icons.star, color: Color(0xFFFFD700), size: 24),
+                  Positioned(
+                    top: -20,
+                    child: SvgPicture.asset(
+                      'assets/icons/crown.svg',
+                      width: 32, // specify dimensions
+                      height: 32,
+                    ),
                   ),
               ],
             ),
@@ -250,16 +246,25 @@ class RankDustyrose2cardcolor extends StatelessWidget {
           const SizedBox(height: 10),
           ...List.generate(7, (index) {
             final rank = index + 3;
-            final isHighlighted = rank == 0; // Điều kiện hiện tại không đúng, sửa sau
+            final isHighlighted =
+                rank == 0; // Điều kiện hiện tại không đúng, sửa sau
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 6),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 6,
+                  vertical: 12,
+                ),
                 decoration: BoxDecoration(
                   color: isHighlighted ? const Color(0xFFBB5E7C) : null,
-                  border: !isHighlighted
-                      ? Border(bottom: BorderSide(color: Colors.black.withOpacity(0.3)))
-                      : null,
+                  border:
+                      !isHighlighted
+                          ? Border(
+                            bottom: BorderSide(
+                              color: Colors.black.withOpacity(0.3),
+                            ),
+                          )
+                          : null,
                   borderRadius: BorderRadius.circular(isHighlighted ? 12 : 0),
                 ),
                 child: Row(
@@ -338,9 +343,18 @@ class RankDustyrose2cardcolor extends StatelessWidget {
       currentIndex: 2,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Trang chủ'),
-        BottomNavigationBarItem(icon: Icon(Icons.fitness_center), label: 'Luyện tập'),
-        BottomNavigationBarItem(icon: Icon(Icons.leaderboard), label: 'Xếp hạng'),
-        BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'Tài khoản'),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.fitness_center),
+          label: 'Luyện tập',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.leaderboard),
+          label: 'Xếp hạng',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.account_circle),
+          label: 'Tài khoản',
+        ),
       ],
       onTap: (index) {
         // Handle navigation
@@ -348,4 +362,3 @@ class RankDustyrose2cardcolor extends StatelessWidget {
     );
   }
 }
-

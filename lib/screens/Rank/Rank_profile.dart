@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_apptoan/widgets/custom_header.dart';
+import 'package:flutter_svg/svg.dart';
 
 class RankScreen extends StatelessWidget {
   const RankScreen({Key? key}) : super(key: key);
@@ -114,15 +115,15 @@ class RankScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              if (isTop) // Show crown only for top rank
-                const Positioned(
-                  top: -12, // Position above avatar
-                  child: Icon(
-                    Icons.star, // Placeholder for crown
-                    color: Color(0xFFFFD700), // Gold color for crown
-                    size: 24,
+              if (isTop)
+                  Positioned(
+                    top: -20,
+                    child: SvgPicture.asset(
+                      'assets/icons/crown.svg',
+                      width: 32, // specify dimensions
+                      height: 32,
+                    ),
                   ),
-                ),
             ],
           ),
           const SizedBox(height: 12),
