@@ -211,10 +211,8 @@ class HomeNotification extends StatelessWidget {
                             ),
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          child: const SizedBox(
-                            width: 24,
-                            height: 24,
-                            // Placeholder for icon
+                          child: Icon(
+                              Icons.notifications_none_outlined,
                           ),
                         ),
                       ],

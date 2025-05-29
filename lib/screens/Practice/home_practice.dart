@@ -76,44 +76,53 @@ class GradeCard extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(
-            width: 40,
-            child: Text(
-              '$grade',
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 60,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w700,
+          Row(
+            children: [
+              // Add the book stack and graduation cap icon
+              Image.asset(
+                'assets/images/imglesson.png', // Replace with your actual asset path
+                width: 70,
+                height: 40,
               ),
-            ),
-          ),
-          const SizedBox(width: 16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
-                'Điểm gần đây nhất:',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 13,
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: -0.08,
-                ),
-              ),
-              Text(
-                '8 điểm',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: -0.23,
-                ),
+              const SizedBox(width: 16),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text(
+                    'Điểm gần đây nhất:',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 13,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w400,
+                      letterSpacing: -0.08,
+                    ),
+                  ),
+                  Text(
+                    '8 điểm',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: -0.23,
+                    ),
+                  ),
+                ],
               ),
             ],
+          ),
+          // Grade number on the right
+          Text(
+            '$grade',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 60,
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ],
       ),

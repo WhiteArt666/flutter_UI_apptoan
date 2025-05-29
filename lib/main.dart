@@ -29,7 +29,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: HomeNotification(),
+          child: RankDustyrose2cardcolor(),
         ),
       ),
     );
