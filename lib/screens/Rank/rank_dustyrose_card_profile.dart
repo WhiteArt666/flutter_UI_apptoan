@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_apptoan/widgets/custom_header.dart';
 
-class RankScreen extends StatelessWidget {
-  const RankScreen({Key? key}) : super(key: key);
+import '../../widgets/custom_header.dart';
+
+class RankDustyroseCardProfile extends StatelessWidget {
+  const RankDustyroseCardProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +68,7 @@ class RankScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         _buildRankCard(2, 'Đinh Trọng Phúc', 10, Colors.white, screenWidth / 3 - 16),
-        _buildRankCard(1, 'Đinh Trọng Phúc', 10, const Color(0xFF43538A), screenWidth / 3 - 16, isTop: true),
+        _buildRankCard(1, 'Đinh Trọng Phúc', 10, const Color(0xFFBB5E7C), screenWidth / 3 - 16, isTop: true),
         _buildRankCard(3, 'Đinh Trọng Phúc', 10, Colors.white, screenWidth / 3 - 16),
       ],
     );
@@ -219,7 +220,7 @@ class RankScreen extends StatelessWidget {
           const SizedBox(height: 10),
           ...List.generate(7, (index) {
             final rank = index + 3;
-            final isHighlighted = rank == 4;
+            final isHighlighted = rank == 0;
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 6),
               child: Container(
@@ -317,3 +318,4 @@ class RankScreen extends StatelessWidget {
     );
   }
 }
+

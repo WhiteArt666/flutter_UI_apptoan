@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_apptoan/widgets/custom_header.dart';
 
-class RankScreen extends StatelessWidget {
-  const RankScreen({Key? key}) : super(key: key);
+import '../../widgets/custom_header.dart';
+
+class RankScreeTopDown extends StatelessWidget {
+  const RankScreeTopDown({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -219,7 +220,7 @@ class RankScreen extends StatelessWidget {
           const SizedBox(height: 10),
           ...List.generate(7, (index) {
             final rank = index + 3;
-            final isHighlighted = rank == 4;
+            final isHighlighted = rank == 9;
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 6),
               child: Container(

@@ -1,46 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_apptoan/theme/app_text_styles.dart';
 
 class QuizNoTime extends StatelessWidget {
   const QuizNoTime({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Define reusable styles
-    const textPrimaryStyle = TextStyle(
-      color: Colors.black,
-      fontSize: 17,
-      fontFamily: 'Inter',
-      fontWeight: FontWeight.w600,
-      height: 1.29,
-      letterSpacing: -0.43,
-    );
-
-    const questionTextStyle = TextStyle(
-      color: Colors.black,
-      fontSize: 17,
-      fontFamily: 'Inter',
-      fontWeight: FontWeight.w400,
-      height: 1.29,
-      letterSpacing: -0.43,
-    );
-
-    const answerTextStyle = TextStyle(
-      color: Colors.black,
-      fontSize: 16,
-      fontFamily: 'Inter',
-      fontWeight: FontWeight.w400,
-      height: 1.31,
-      letterSpacing: -0.31,
-    );
-
-    const secondaryTextStyle = TextStyle(
-      color: Color(0x993C3C43),
-      fontSize: 17,
-      fontFamily: 'Inter',
-      fontWeight: FontWeight.w400,
-      height: 1.29,
-      letterSpacing: -0.43,
-    );
+    
 
     return Scaffold(
       backgroundColor: const Color(0xFFF3F7FB),
@@ -56,16 +22,17 @@ class QuizNoTime extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildQuizHeader(textPrimaryStyle),
+                    _buildQuizHeader(AppTextStyles.textPrimaryStyle),
                     const SizedBox(height: 24),
-                    _buildQuestionCard(context, questionTextStyle, secondaryTextStyle, answerTextStyle),
+                    _buildQuestionCard(context, AppTextStyles.questionTextStyle, AppTextStyles.secondaryTextStyle, AppTextStyles.answerTextStyle),
                   ],
                 ),
               ),
+              SizedBox(height: 210),
               // Bottom Buttons
               _buildBottomButtons(context),
               // Home Indicator
-              _buildHomeIndicator(),
+              // _buildHomeIndicator(),
             ],
           ),
         ),
@@ -242,18 +209,6 @@ class QuizNoTime extends StatelessWidget {
           letterSpacing: -0.43,
         ),
         textAlign: TextAlign.center,
-      ),
-    );
-  }
-
-  Widget _buildHomeIndicator() {
-    return Container(
-      width: 144,
-      height: 5,
-      margin: const EdgeInsets.only(top: 28),
-      decoration: BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.circular(100),
       ),
     );
   }

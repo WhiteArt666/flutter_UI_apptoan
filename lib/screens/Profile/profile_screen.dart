@@ -1,133 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_apptoan/theme/app_colors.dart';
-import 'package:flutter_apptoan/widgets/bottom_navigaton.dart';
+
+import '../../widgets/custom_header.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF2F2F7),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // _buildStatusBar(),
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildProfileCard(),
-                    const SizedBox(height: 40),
-                    _buildSection(
-                      title: 'Quản lý tài khoản',
-                      items: [
-                        _buildListItem(
-                          'Thông tin tài khoản',
-                          Icons.person_outline,
+  return Scaffold(
+    backgroundColor: const Color(0xFFF2F2F7),
+    body: Stack(
+      children: [
+        // Thêm CustomHeader làm nền
+        CustomHeader(),
+        // Nội dung chính của Scaffold
+        Scaffold(
+          backgroundColor: Colors.transparent, // Đặt nền trong suốt để thấy CustomHeader
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildProfileCard(),
+                        const SizedBox(height: 40),
+                        _buildSection(
+                          title: 'Quản lý tài khoản',
+                          items: [
+                            _buildListItem(
+                              'Thông tin tài khoản',
+                              Icons.person_outline,
+                            ),
+                            _buildListItem('Đổi mật khẩu', Icons.lock_outline),
+                          ],
                         ),
-                        _buildListItem('Đổi mật khẩu', Icons.lock_outline),
+                        const SizedBox(height: 20),
+                        _buildSection(
+                          title: 'Hoạt động học tập',
+                          items: [_buildListItem('Lịch sử làm bài', Icons.history)],
+                        ),
+                        const SizedBox(height: 20),
+                        _buildSection(
+                          title: 'Hỗ trợ và thông tin',
+                          items: [
+                            _buildListItem('Chính sách', Icons.policy),
+                            _buildListItem('Về chúng tôi', Icons.info_outline),
+                            _buildListItem('Liên hệ', Icons.contact_support),
+                            _buildListItem(
+                              'Câu hỏi thường gặp',
+                              Icons.question_answer,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        _buildLogoutButton(),
                       ],
                     ),
-                    const SizedBox(height: 20),
-                    _buildSection(
-                      title: 'Hoạt động học tập',
-                      items: [_buildListItem('Lịch sử làm bài', Icons.history)],
-                    ),
-                    const SizedBox(height: 20),
-                    _buildSection(
-                      title: 'Hỗ trợ và thông tin',
-                      items: [
-                        _buildListItem('Chính sách', Icons.policy),
-                        _buildListItem('Về chúng tôi', Icons.info_outline),
-                        _buildListItem('Liên hệ', Icons.contact_support),
-                        _buildListItem(
-                          'Câu hỏi thường gặp',
-                          Icons.question_answer,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    _buildLogoutButton(),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
+           bottomNavigationBar: _buildBottomNavigationBar(),
+          
         ),
-      ),
-      bottomNavigationBar: CustomBottomNavigationBar(
-        selectedIndex: 4,
-        onItemTapped: (index) {
-          // Chuyển trang tương ứng khi người dùng nhấn vào bottom nav
-          if (index == 0) {
-            Navigator.pushReplacementNamed(context, '/home');
-          } else if (index == 1) {
-            Navigator.pushReplacementNamed(context, '/exercise');
-          } else if (index == 2) {
-            Navigator.pushReplacementNamed(context, '/ranking');
-          } else if (index == 3) {
-            Navigator.pushReplacementNamed(context, '/profile');
-          }
-        },
-      ),
-    );
-  }
-
-  // Widget _buildStatusBar() {
-  //   return Container(
-  //     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //       children: [
-  //         const Text(
-  //           '9:41',
-  //           style: TextStyle(
-  //             color: Colors.black,
-  //             fontSize: 17,
-  //             fontFamily: 'Inter',
-  //             fontWeight: FontWeight.w600,
-  //             height: 1.29,
-  //           ),
-  //         ),
-  //         Row(
-  //           mainAxisSize: MainAxisSize.min,
-  //           children: [
-  //             Opacity(
-  //               opacity: 0.35,
-  //               child: Container(
-  //                 width: 25,
-  //                 height: 13,
-  //                 decoration: BoxDecoration(
-  //                   border: Border.all(color: Colors.black),
-  //                   borderRadius: BorderRadius.circular(4.3),
-  //                 ),
-  //               ),
-  //             ),
-  //             const SizedBox(width: 7),
-  //             Container(
-  //               width: 21,
-  //               height: 9,
-  //               decoration: BoxDecoration(
-  //                 color: Colors.black,
-  //                 borderRadius: BorderRadius.circular(2.5),
-  //               ),
-  //             ),
-  //           ],
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
+      ],
+    ),
+  );
+}
 
   Widget _buildProfileCard() {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.PrimaryColor.withOpacity(0.5),
+        color: AppColors.sanMarino300.withOpacity(0.5),
         borderRadius: BorderRadius.circular(12),
         boxShadow: const [
           BoxShadow(
@@ -149,7 +100,7 @@ class Profile extends StatelessWidget {
                   color: Color.fromARGB(255, 185, 190, 202),
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                    image: NetworkImage("https://placehold.co/62x62"),
+                    image: AssetImage('assets/icons/Memoji09.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -280,3 +231,31 @@ class Profile extends StatelessWidget {
     );
   }
 }
+
+Widget _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: const Color(0xFF5875B8),
+      unselectedItemColor: const Color(0xFF999999),
+      selectedLabelStyle: const TextStyle(
+        fontSize: 10,
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w500,
+      ),
+      unselectedLabelStyle: const TextStyle(
+        fontSize: 10,
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w500,
+      ),
+      currentIndex: 2,
+      items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Trang chủ'),
+        BottomNavigationBarItem(icon: Icon(Icons.fitness_center), label: 'Luyện tập'),
+        BottomNavigationBarItem(icon: Icon(Icons.leaderboard), label: 'Xếp hạng'),
+        BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'Tài khoản'),
+      ],
+      onTap: (index) {
+        // Handle navigation
+      },
+    );
+  }

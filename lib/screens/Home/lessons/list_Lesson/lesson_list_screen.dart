@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_apptoan/screens/Home/lessons/list_Lesson/lesson_Detail/lesson_detail_screen.dart';
 
-class LessonListScreen extends StatelessWidget {
-  const LessonListScreen({super.key});
+class Lesson_ListS_creen extends StatelessWidget {
+  const Lesson_ListS_creen({super.key});
 
   @override
   Widget build(BuildContext context) {
